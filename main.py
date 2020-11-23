@@ -18,7 +18,7 @@ class Main:
             with open("config.json", "w") as config_file_create:
                 banned_keys = {"banned_keys": ["w", "a", "s", "d"]}
                 json.dump(banned_keys, config_file_create)
-        #self.banned_keys = ["w", "a", "s", "d"]  # List of keys that cannot be the switch.
+        # List of keys that cannot be the switch.
         # I'm blocking "w", "a", "s", "d" just because they are used in games for movement.
         # Feel free to change it.
         self.parsed_keys = []
