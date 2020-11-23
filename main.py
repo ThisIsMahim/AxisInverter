@@ -7,7 +7,7 @@ from pynput import mouse
 from threading import Thread
 
 
-class Main:
+class AxisInverter:
     def __init__(self):
         os.system("title AxisInverter")
         if os.path.isfile("config.json"):
@@ -117,4 +117,4 @@ class Main:
             self.mouse.position = (x1 - dx, y1 - dy)
 
 
-main = Main()
+AxisInverter()
