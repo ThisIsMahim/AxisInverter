@@ -32,10 +32,7 @@ class AxisInverter:
         self.switch = None
         self.mouse = mouse.Controller()
         self.minx, self.miny = (0, 0)
-        first_pos = pyautogui.position()
-        self.mouse.position = (99999, 99999)  # Getting the max x and max y of your screen.
-        self.maxx, self.maxy = pyautogui.position()
-        self.mouse.position = first_pos  # Setting your previous cursor position.
+        self.maxx, self.maxy = pyautogui.size()  # Getting the max x and max y of your screen.
         print("Press the key to choose a switch...")
 
         with keyboard.Listener(on_press=self.on_press, on_release=self.on_release) as keyboard_listener:
@@ -81,6 +78,7 @@ class AxisInverter:
                         # Threading is used to manage the keyboard listener AND to do the inverting loop.
                         # If we wouldn't use threading, we wouldn't be able to switch the inversion with a key.
                         self.thread = Thread(target=self.inversion)
+                        self.thread.daemon = True
                         self.thread.start()
                     else:
                         self.inverted = False
