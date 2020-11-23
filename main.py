@@ -1,20 +1,29 @@
 import pyautogui
+import json
+import os
 from time import sleep
 from pynput import keyboard
 from pynput import mouse
 from threading import Thread
-import os
 
 
-class KeyboardListener:
+class Main:
     def __init__(self):
         os.system("title AxisInverter")
-        self.banned_keys = ["w", "a", "s", "d"]  # List of keys that cannot be the switch.
+        if os.path.isfile("config.json"):
+            with open("config.json", "r+") as config_file:
+                file_content = config_file.read()
+                banned_keys: dict = json.loads(file_content)
+        else:
+            with open("config.json", "w") as config_file_create:
+                banned_keys = {"banned_keys": ["w", "a", "s", "d"]}
+                json.dump(banned_keys, config_file_create)
+        #self.banned_keys = ["w", "a", "s", "d"]  # List of keys that cannot be the switch.
         # I'm blocking "w", "a", "s", "d" just because they are used in games for movement.
         # Feel free to change it.
         self.parsed_keys = []
-        for keys in self.banned_keys:
-            self.parsed_keys.append(self.key_parser(keys))
+        for key in banned_keys["banned_keys"]:
+            self.parsed_keys.append(self.key_parser(key))
         self.mouse = mouse.Controller()
         self.switch_set = False
         self.inverted = False
@@ -108,4 +117,4 @@ class KeyboardListener:
             self.mouse.position = (x1 - dx, y1 - dy)
 
 
-main = KeyboardListener()
+main = Main()
