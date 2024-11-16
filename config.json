@@ -1,0 +1,32 @@
+{
+    "banned_keys": [
+        "w",
+        "a",
+        "s",
+        "d"
+    ],
+    "theme": "default",
+    "inversion_speed": 0.0001,
+    "hotkey": "5",
+    "inversion_zone": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 1920,
+        "y2": 1080
+    },
+    "invert_x": true,
+    "invert_y": true,
+    "profiles": {
+        "new": {
+            "inversion_speed": 0.0001,
+            "invert_x": true,
+            "invert_y": true,
+            "inversion_zone": {
+                "x1": 0,
+                "y1": 0,
+                "x2": 1920,
+                "y2": 1080
+            }
+        }
+    }
+}
